@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ram-webiks-outposts App', () => {
+describe('angular-heros-tutorial App', () => {
   let page: AppPage;
 
   beforeEach(() => {
