@@ -9,6 +9,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import {HeroService} from "./hero.service";
 import { MessagesService } from './messages.service';
 import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MessagesComponent } from './messages/messages.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [ HeroService, MessagesService ],
   bootstrap: [AppComponent]
