@@ -9,7 +9,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import {HeroService} from "./hero.service";
 import { MessagesService } from './messages.service';
 import { MessagesComponent } from './messages/messages.component';
-import { AppRoutingModule } from './/app-routing.module';
+import {AppRoutingModule, routes} from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -17,14 +18,18 @@ import { AppRoutingModule } from './/app-routing.module';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ HeroService, MessagesService ],
+  providers: [
+    HeroService, MessagesService,
+    {provide: 'routes', useValue: routes}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
