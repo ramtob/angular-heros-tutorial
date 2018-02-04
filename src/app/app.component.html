@@ -1,8 +1,17 @@
-<h1>{{title}}</h1>
-<nav>
+<div class="main-wrapper">
+  <header>
+    <h1>{{title}}</h1>
+    <nav>
   <span *ngFor="let route of routes; index as i">
     <a *ngIf="i < 2" routerLink="/{{route.path}}">{{route.path}}</a>
   </span>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+    </nav>
+  </header>
+  <div class="content">
+    <div class="verbal-content">
+      <router-outlet></router-outlet>
+      <app-messages></app-messages>
+    </div>
+    <div class="map"></div>
+  </div>
+</div>

@@ -8,6 +8,6 @@ import {Component, Inject} from '@angular/core';
 export class AppComponent {
   title = 'Cookies and more';
 
-  constructor(@Inject('routes') private routes) {
+  constructor(@Inject('routes') public routes) {
   }
 }

@@ -4,11 +4,13 @@ h1 {
   color: #999;
   margin-bottom: 0;
 }
+
 h2 {
   font-size: 2em;
   margin-top: 0;
   padding-top: 0;
 }
+
 nav a {
   padding: 5px 10px;
   text-decoration: none;
@@ -26,4 +28,20 @@ nav a:hover {
 }
 nav a.active {
   color: #039be5;
+}
+
+div.main-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div.content {
+  display: flex;
+  flex: 1;
+}
+
+div.map {
+  flex: 1;
+  border: 1px solid red;
 }
