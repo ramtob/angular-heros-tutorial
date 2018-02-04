@@ -41,7 +41,7 @@ div.content {
   flex: 1;
 }
 
-div.map {
+app-heroes-map {
   flex: 1;
   border: 1px solid red;
 }
