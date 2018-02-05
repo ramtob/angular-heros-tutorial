@@ -1,0 +1,4 @@
+#mapid {
+  /* a leaflet container needs to have an explicit height */
+  height: 100%;
+}
