@@ -27,7 +27,7 @@ export class HeroesMapComponent implements OnInit {
         heroes
           .filter(hero => hero.location)
           .forEach(hero => {
-            this.map.addMarker(hero.location, hero.name);
+            this.map.addMarker(hero.id, hero.location, hero.name);
           });
       });
   }

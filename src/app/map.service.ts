@@ -7,13 +7,14 @@ const TELAVIV = [32.079, 34.8],
 @Injectable()
 export class MapService {
 
-  private myMap: Map;
+  private goodMap: Map;
   private markerIcon: Icon;
+  private markers = {};
 
   constructor() { }
 
   init(elementId) {
-    this.myMap = map(elementId, {center: TELAVIV, zoom: INITIAL_ZOOM_LEVEL});
+    this.goodMap = map(elementId, {center: TELAVIV, zoom: INITIAL_ZOOM_LEVEL});
     const tiles: TileLayer = tileLayer(
       'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
       maxZoom: 18,
@@ -22,7 +23,7 @@ export class MapService {
       'Imagery © <a href="http://mapbox.com">Mapbox</a>',
       id: 'mapbox.streets'
     });
-    tiles.addTo(this.myMap);
+    tiles.addTo(this.goodMap);
 
     // Define my own marker icon (leaflet's default doesn't work well with webpack)
     this.markerIcon = icon({
@@ -37,10 +38,26 @@ export class MapService {
     });
   }
 
-  addMarker(latlng, popupHtmlText) {
-    const myMarker: Marker = marker(latlng, {icon: this.markerIcon});
-    myMarker.addTo(this.myMap);
+  addMarker(id, latlng, popupHtmlText) {
+    const key = id.toString();
+    let myMarker: Marker;
+    if (!this.markers[key]) {
+      myMarker = marker(latlng, {icon: this.markerIcon});
+      myMarker.addTo(this.goodMap);
+      this.markers[key] = myMarker;
+    } else {
+      myMarker = this.markers[key];
+      myMarker.setLatLng(latlng);
+    }
     myMarker.bindPopup(popupHtmlText);
+  }
+
+  on(eventType, callback) {
+    this.goodMap.on(eventType, callback);
+  }
+
+  off(eventType, callback) {
+    this.goodMap.off(eventType, callback);
   }
 
 }
