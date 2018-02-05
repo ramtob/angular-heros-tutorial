@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Map, map, TileLayer, tileLayer} from 'leaflet';
+import {Map, map, TileLayer, tileLayer, Marker, marker, Icon, icon} from 'leaflet';
 
 const TELAVIV = [32.079, 34.8],
   INITIAL_ZOOM_LEVEL = 14;
@@ -8,6 +8,7 @@ const TELAVIV = [32.079, 34.8],
 export class MapService {
 
   private myMap: Map;
+  private markerIcon: Icon;
 
   constructor() { }
 
@@ -22,6 +23,24 @@ export class MapService {
       id: 'mapbox.streets'
     });
     tiles.addTo(this.myMap);
+
+    // Define my own marker icon (leaflet's default doesn't work well with webpack)
+    this.markerIcon = icon({
+      iconUrl:       'assets/leaflet_images/marker-icon.png',
+      iconRetinaUrl: 'assets/leaflet_images/marker-icon-2x.png',
+      shadowUrl:     'assets/leaflet_images/marker-shadow.png',
+      iconSize:    [25, 41],
+      iconAnchor:  [12, 41],
+      popupAnchor: [1, -34],
+      tooltipAnchor: [16, -28],
+      shadowSize:  [41, 41]
+    });
+  }
+
+  addMarker(latlng, popupHtmlText) {
+    const myMarker: Marker = marker(latlng, {icon: this.markerIcon});
+    myMarker.addTo(this.myMap);
+    myMarker.bindPopup(popupHtmlText);
   }
 
 }
