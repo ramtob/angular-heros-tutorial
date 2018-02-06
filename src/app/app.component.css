@@ -2,13 +2,13 @@
 h1 {
   font-size: 1.2em;
   color: #999;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 h2 {
   font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
@@ -36,9 +36,25 @@ div.main-wrapper {
   flex-direction: column;
 }
 
+header.main-header {
+  padding: 10px;
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
 div.content {
   display: flex;
   flex: 1;
+}
+
+div.verbal-content {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+app-messages {
+  flex: 1;
+  background-color: rgba(0, 255, 0, 0.05);
 }
 
 app-heroes-map {
