@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import { Location } from '@angular/common';
 import {HeroService} from "../hero.service";
 import {MapService} from "../map.service";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-hero-detail',
@@ -44,7 +45,12 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   save(): void {
     this.heroService.updateHero(this.hero)
-      .subscribe(() => this.goBack());
+      .pipe(
+        tap(() => {this.map.addMarker(this.hero.id, this.hero.location, this.hero.name); })
+      )
+      .subscribe(() => {
+        // this.goBack()
+      });
   }
 
   onMapClick(event) {
