@@ -13,6 +13,7 @@ import {MapService} from "../map.service";
 export class HeroDetailComponent implements OnInit, OnDestroy {
 
   @Input() hero: Hero;
+  listener: Function;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,12 +24,12 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getHero();
-    this.map.on('click', this.onMapClick.bind(this));
+    this.listener = this.onMapClick.bind(this);
+    this.map.on('click', this.listener);
   }
 
   ngOnDestroy(): void {
-    this.map.off('click', this.onMapClick.bind(this));
-    // Todo: is this the same function that we used in on()? becasue of bind()
+    this.map.off('click', this.listener);
   }
 
   getHero(): void {
