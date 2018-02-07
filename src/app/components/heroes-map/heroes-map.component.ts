@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MapService} from "../services/map.service";
-import {HeroService} from "../services/hero.service";
+import {MapService} from "../../services/map.service";
+import {HeroService} from "../../services/hero.service";
 
 @Component({
   selector: 'app-heroes-map',

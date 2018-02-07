@@ -1,9 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Hero} from "../models/hero.model";
+import {Hero} from "../../models/hero.model";
 import {ActivatedRoute} from "@angular/router";
 import { Location } from '@angular/common';
-import {HeroService} from "../services/hero.service";
-import {MapService} from "../services/map.service";
+import {HeroService} from "../../services/hero.service";
+import {MapService} from "../../services/map.service";
 import {tap} from "rxjs/operators";
 
 @Component({
